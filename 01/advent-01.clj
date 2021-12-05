@@ -1,9 +1,11 @@
+(require '[clojure.string :as str])
+
 (defn parse-int [str]
   (Integer/parseInt str))
 
 (defn read-file [file]
   (-> (slurp file)
-      (clojure.string/split-lines)))
+      (str/split-lines)))
 
 (defn number-of-measurements [input]
   (let [[x & xs] input]
@@ -18,6 +20,6 @@
                 xs)
         (get :count))))
 
-(let [input (read-file "01/input.txt")
+(let [input (read-file "resources/input_advent_01.txt")
       measurements (map #(parse-int %) input)
       result (number-of-measurements measurements)] result)
