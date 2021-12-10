@@ -7,7 +7,7 @@
   (-> (slurp file)
       (str/split-lines)))
 
-(defn number-of-measurements [input]
+(defn part-1 [input]
   (let [[x & xs] input]
     (-> (reduce (fn [acc curr]
                   (let [prev (:prev acc)
@@ -23,4 +23,22 @@
 (let [input (read-file "resources/input_advent_01.txt")]
   (->
    (map #(parse-int %) input)
-   (number-of-measurements)))
+   (part-1)))
+
+"================== part 2"
+
+(defn sum-windows [windows]
+  (map #(reduce + %) windows))
+
+(defn part-2 [input]
+  (let [windows (partition 3 1 input)]
+    (-> windows
+        (sum-windows)
+        (part-1))))
+
+(let [input (->>
+             (read-file "resources/input_advent_01.txt")
+             (map #(parse-int %)))]
+  (part-2 input))
+
+
