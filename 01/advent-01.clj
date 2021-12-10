@@ -10,16 +10,17 @@
 (defn number-of-measurements [input]
   (let [[x & xs] input]
     (-> (reduce (fn [acc curr]
-                  (let [prev (get acc :prev)
-                        count (get acc :count)
+                  (let [prev (:prev acc)
+                        count (:count acc)
                         acc (assoc acc :prev curr)]
                     (if (< prev curr)
                       (assoc acc :count (inc count))
                       acc)))
                 {:prev x :count 0}
                 xs)
-        (get :count))))
+        (:count))))
 
-(let [input (read-file "resources/input_advent_01.txt")
-      measurements (map #(parse-int %) input)
-      result (number-of-measurements measurements)] result)
+(let [input (read-file "resources/input_advent_01.txt")]
+  (->
+   (map #(parse-int %) input)
+   (number-of-measurements)))
