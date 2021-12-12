@@ -20,9 +20,9 @@
                 xs)
         (:count))))
 
-(let [input (read-file "resources/input_advent_01.txt")]
+(let [input2 (read-file "resources/input_advent_01.txt")]
   (->
-   (map #(parse-int %) input)
+   (map #(parse-int %) input2)
    (part-1)))
 
 "================== part 2"

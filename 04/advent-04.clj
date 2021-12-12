@@ -8,7 +8,7 @@
 (part-1 (read-file "resources/input_advent_04.txt"))
 
 "================== part 2"
-
+(+ 1 1)
 (defn part-2 [input])
 (part-2 (read-file "resources/input_advent_03.txt"))
 
